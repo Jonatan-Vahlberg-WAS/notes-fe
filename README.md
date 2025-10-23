@@ -14,11 +14,12 @@ Joogle - Keep is a note-taking app built with React, Tailwind CSS, and TypeScrip
 
 ## API
 ## Enviroment variables
-````
+```
 VITE_API_URL=http://localhost:8000
 ```
+
 ### Auth
-````
+```
 POST /auth/signup
 POST /auth/signin
 POST /auth/signout
