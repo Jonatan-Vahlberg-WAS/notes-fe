@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "./ui/form";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import authService from "@/utils/authService";
 
 const formSchema = z.object({
   email: z.string().email("Valid email is required"),
@@ -20,9 +21,18 @@ export default function AuthDialogForm() {
     },
   });
 
-  function onSubmit(values: FormSchema) {
+  async function onSubmit(values: FormSchema) {
     console.log(values);
-    // TODO: Implement login logic
+    try {
+      const response = await authService.signin(values.email, values.password)
+      if(response.ok) {
+        return alert("Login successful")
+      }
+     throw new Error("Login unsuccesful") 
+    } catch(err) {
+      console.warn("Login unsuccessful: ",err)
+      alert("Login unsuccesful")
+    }
   }
 
   return (

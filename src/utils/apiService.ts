@@ -10,11 +10,12 @@ export default function apiService(url: string, requestInit: RequestInit) {
         //TODO: Add authorization header through cookies
     }
 
-    const requestInitWithHeaders = {
+    const requestInitWithHeaders: RequestInit = {
         ...requestInit,
+        credentials: "include",
         headers: {
+            ...headers,
             ...requestInit.headers,
-            ...headers
         }
     }
 

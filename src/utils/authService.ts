@@ -9,8 +9,14 @@ class AuthService {
             body: JSON.stringify({ email, password })
         });
     }
+
+    async signin(email: string, password: string) {
+        return await apiService(`${this.authUrl}/signin`, {
+            method: 'POST',
+            body: JSON.stringify({ email, password })
+        });
+    }
     //TODO Fill the rest of the auth service methods
-    //TODO: Login
     //TODO: Logout
     //TODO: Get user profile
 }
